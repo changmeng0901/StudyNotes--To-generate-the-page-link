@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<a id="btn1" href="javascript:;" onclick="onclickdate(1)">2015年数据</a>
+	<a id="btn2" href="javascript:;" onclick="onclickdate(2)">2016年数据</a>
+	<a id="btn3" href="javascript:;" onclick="onclickdate(3)">2017年数据</a>
+	<div data-highcharts-chart="14" id="containerZhe"></div>
+
+<script type="text/javascript" src="js/commons/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/highcharts/highcharts.js"></script>
+<script type="text/javascript">
+onclickdate(1);
+function onclickdate(data){
+	var rcsumString="";
+        var topString="";
+        var quSums1="";
+		var quSums2="";
+		var vNameString="";
+        var minsum=0;
+        var minsum2=0;
+        var viewsString="";
+        var dataAll = "";
+        var forwardingStr = "";
+        if(data == 1){
+        	rcsumString= [['朝天椒（红色）',10051],['葡萄（黑巴拉多）',45],['穿心莲',23],['阳山水蜜桃',21],['苹果',18],['铁观音',14],['小番茄（黄圣女果）',11],['紫甘蓝',9],['红富士苹果',6],['其他',43]];
+            topString=['2015-09','2015-10','2015-11','2015-12','2015-01','2015-02','2015-03','2015-04','2015-201505','2015-06','2015-07','2015-08','2015-09'];
+            quSums1=[3,13,19,11,10150,8,37,2,4,7,2,2,0];
+    		quSums2=[20,1,13,27,40,7,81,16,0,66,4,4,9];
+    		vNameString=['朝天椒（红色）'];
+            minsum=0;
+            minsum2=0;
+            viewsString=[{y:255,color:'#42b7df'}];
+            forwardingStr=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+        }else if(data == 2){
+			/*if(data !=""){
+				dataAll = data.split("_");
+				eval("rcsumString = "+dataAll[0]);
+				eval("topString = "+dataAll[1]);
+				eval("quSums1 = "+dataAll[2]);
+				eval("quSums2 = "+dataAll[3]);
+				eval("vNameString = "+dataAll[4]);
+				eval("minsum = "+dataAll[5]);
+				eval("viewsString = "+dataAll[6]);
+				eval("minsum2 = "+dataAll[7]);
+				eval("forwardingStr = "+dataAll[8]);
+			}*/
+			rcsumString= [['朝天椒（红色）',10051],['葡萄（黑巴拉多）',45],['穿心莲',23],['阳山水蜜桃',21],['苹果',18],['铁观音',14],['小番茄（黄圣女果）',11],['紫甘蓝',9],['红富士苹果',6],['其他',43]];
+            topString=['2016-09','2016-10','2016-11','2016-12','2016-01','2016-02','2016-03','2016-04','2016-05','2016-06','2016-07','2016-08','2016-09'];
+            quSums1=[3,13,19,11,10150,8,37,2,4,7,2,2,0];
+    		quSums2=[20,1,13,27,40,7,81,16,0,66,4,4,9];
+    		vNameString=['朝天椒（红色）'];
+            minsum=0;
+            minsum2=0;
+            viewsString=[{y:255,color:'#42b7df'}];
+            forwardingStr=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+    	}else{
+    		rcsumString= [['朝天椒（红色）',10051],['葡萄（黑巴拉多）',45],['穿心莲',23],['阳山水蜜桃',21],['苹果',18],['铁观音',14],['小番茄（黄圣女果）',11],['紫甘蓝',9],['红富士苹果',6],['其他',43]];
+            topString=['2017-09','2017-10','2017-11','2017-12','2017-01','2017-02','2017-03','2017-04','2017-05','2017-06','2017-07','2017-08','2017-09'];
+            quSums1=[3,13,19,11,10150,8,37,2,4,7,2,2,0];
+    		quSums2=[20,1,13,27,40,7,81,16,0,66,4,4,9];
+    		vNameString=['朝天椒（红色）'];
+            minsum=0;
+            minsum2=0;
+            viewsString=[{y:255,color:'#42b7df'}];
+            forwardingStr=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+    	}
+	$('#containerZhe').highcharts({
+        	chart: {
+	            type: 'spline',
+	            	backgroundColor: {
+	    			linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+	    			stops: [
+	    				[0, 'rgb(255, 255, 255)'],
+	    				[1, 'rgb(255, 255, 255)']
+	    			]
+	    		},
+	    		plotShadow: true,
+	        },
+            title: {
+                text: '',
+                x: -20 //center
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                
+                categories: topString,
+                min:minsum2
+            },
+            yAxis: [{
+            	min:0,
+                title: {
+                    text: '履历使用量',
+                    
+                    	rotation: 90 // 默认值为270
+                },
+                labels: {
+                    format: '{value} 张'}
+                    ,
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },{
+            	min:0,
+                title: {
+                    text: '履历访问量'
+                },labels: {
+                    format: '{value} 次'}
+                ,
+                opposite:true,
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },{
+            	min:0,
+                title: {
+                    text: '履历转发量'
+                },labels: {
+                    format: '{value} 次'}
+                ,
+                opposite:true,
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            }],
+            tooltip: {
+            	formatter: function() {
+            		var _a = this.series.name=="履历使用量"?"张":"次";
+                    return '<b>'+ this.series.name +'</b><br/>'+
+                    this.x +'：'+ this.y + _a;
+            	}
+            },
+            legend: {   
+	        	itemStyle: {
+				font: '9pt Trebuchet MS, Verdana, sans-serif',
+				color: 'black'
+
+				},
+				itemHoverStyle: {
+					color: '#039'
+				},
+				itemHiddenStyle: {
+					color: 'gray'
+				}
+	        },  
+	        lang: {
+	            noData: "暂无数据!"
+	        },
+            series: [{
+                name: '履历使用量',
+                
+                data: quSums1
+            }, {
+                name: '履历访问量',
+                yAxis: 1,
+                data: quSums2
+            }, {
+                name: '履历转发量',
+                yAxis: 2,
+                data: forwardingStr
+            }],
+            scrollbar: {
+    			enabled: true
+    		}
+        });
+}
+</script>
+</body>
+</html>
